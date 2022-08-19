@@ -32,16 +32,16 @@ build_db.o: build_db.cc taxonomy.h mmscanner.h seqreader.h compact_hash.h kv_sto
 lookup_accession_numbers.o: lookup_accession_numbers.cc mmap_file.h utilities.h
 
 build_db: build_db.o mmap_file.o compact_hash.o taxonomy.o seqreader.o mmscanner.o omp_hack.o utilities.o
-	$(CXX) $(CXXFLAGS) -o $@ $^
+	$(CXX) $(LDFLAGS) $(CXXFLAGS) -o $@ $^
 
 classify: classify.o reports.o hyperloglogplus.o mmap_file.o compact_hash.o taxonomy.o seqreader.o mmscanner.o omp_hack.o aa_translate.o utilities.o
-	$(CXX) $(CXXFLAGS) -o $@ $^
+	$(CXX) $(LDFLAGS) $(CXXFLAGS) -o $@ $^
 
 estimate_capacity: estimate_capacity.o seqreader.o mmscanner.o omp_hack.o utilities.o
-	$(CXX) $(CXXFLAGS) -o $@ $^
+	$(CXX) $(LDFLAGS) $(CXXFLAGS) -o $@ $^
 
 dump_table: dump_table.o mmap_file.o compact_hash.o omp_hack.o taxonomy.o reports.o hyperloglogplus.o
-	$(CXX) $(CXXFLAGS) -o $@ $^
+	$(CXX) $(LDFLAGS) $(CXXFLAGS) -o $@ $^
 
 lookup_accession_numbers: lookup_accession_numbers.o mmap_file.o omp_hack.o utilities.o
-	$(CXX) $(CXXFLAGS) -o $@ $^
+	$(CXX) $(LDFLAGS) $(CXXFLAGS) -o $@ $^
